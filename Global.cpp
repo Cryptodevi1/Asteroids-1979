@@ -38,6 +38,5 @@ void Global::reset()
 
 Global::~Global()
 {
-	reset();
 	delete instance;
 }

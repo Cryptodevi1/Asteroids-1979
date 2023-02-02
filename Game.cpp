@@ -1,5 +1,7 @@
 ﻿#include "Framework.h"
 #include "Global.h"
+#include "GameObject.h"
+
 #include <vector>
 
 int w = 800;
@@ -11,8 +13,8 @@ class GameGlobal : public Framework
 public:
 	/*Cursor* cursor;
 	Ship* ship;
-	Map* map;
-	std::vector<GameObject*> gameObjs;*/
+	Map* map;*/
+	std::vector<GameObject*> gameObjs;
 	Global* global;
 	float prevT, dt = 0;
 	float fps = 120;

@@ -2,6 +2,8 @@
 #include <vector>
 #include <queue>
 
+class GameObject;
+
 //global func and variables for start/end game 
 class Global
 {
