@@ -1,5 +1,7 @@
 ﻿#include "Framework.h"
 #include "Global.h"
+#include "Cursor.h"
+#include "Ship.h"
 #include "GameObject.h"
 
 #include <vector>
@@ -11,9 +13,8 @@ class GameGlobal : public Framework
 {
 
 public:
-	/*Cursor* cursor;
+	Cursor* cursor;
 	Ship* ship;
-	Map* map;*/
 	std::vector<GameObject*> gameObjs;
 	Global* global;
 	float prevT, dt = 0;
@@ -32,8 +33,13 @@ public:
 	virtual bool Init()
 	{
 		global = Global::getInstance();
-		//global->reset();
-		//memory allocations here ...
+		cursor = new Cursor();
+		global->reset();
+		ship = new Ship();
+		//centered ship
+		ship->position = Coordinate(global->mapW / 2, global->mapH / 2);
+		global->gameObjects.push_back(ship);
+		gameObjs = global->gameObjects;
 		showCursor(false);
 		return true;
 	}
@@ -51,47 +57,38 @@ public:
 		dt = dt / fps;
 		prevT = getTickCount();
 
-		//update obj here...
-
+		gameObjs = global->gameObjects;
+		for (auto object : gameObjs)
+			object->update(dt);
+		cursor->update();
 		return false;
 	}
 
 	virtual void onMouseMove(int x, int y, int xrelative, int yrelative)
 	{
 		//move cursor and aim
+		cursor->moveCursor(Coordinate(x, y));
 	}
 
 	virtual void onMouseButtonClick(FRMouseButton button, bool isReleased)
 	{
-		//shoot when click 
+		ship->onMouseClick(button, isReleased);
 	}
 
 	virtual void onKeyPressed(FRKey k)
 	{
-		//ship move
+		ship->onKeyPrsed(k);
 	}
 
 	virtual void onKeyReleased(FRKey k)
 	{
-		//отпусккнопки
+		ship->onKeyRlsed(k);
 	}
 
 	virtual const char* GetTitle() override
 	{
 		return "Asteroids(1979->2023)";
 	}
-
-private:
-
-	struct sSpaceObject
-	{
-		float x;
-		float y;
-		float dx;
-		float dy;
-	};
-
-	std::vector<sSpaceObject> vecAsteroids;
 };
 
 int main(int argc, char* argv[])

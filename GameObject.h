@@ -8,6 +8,7 @@ enum class objectType
 	ship,
 	bullet,
 	asteroid,
+	NONE,
 };
 
 class GameObject
@@ -22,6 +23,10 @@ public:
 
 	float speed;
 	bool needDestroy;
+
+	Coordinate currentSpeed;
+	Coordinate position;
+	Coordinate relativePosition;
 
 	Global* gGlobal;
 	objectType type;
