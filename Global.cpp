@@ -13,6 +13,10 @@ Global::Global()
 
 	mapW = 1200;
 	mapH = 1200;
+
+	bulletId = 0;
+	asteroidCount = 0;
+	asteroidId = 0;
 }
 
 Global* Global::getInstance()

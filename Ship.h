@@ -2,6 +2,7 @@
 #include "Framework.h"
 #include "Global.h"
 #include "GameObject.h"
+#include "Bullet.h"
 
 #include <math.h>
 class Ship : public GameObject

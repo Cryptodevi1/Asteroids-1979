@@ -66,7 +66,7 @@ public:
 
 	virtual void onMouseMove(int x, int y, int xrelative, int yrelative)
 	{
-		//move cursor and aim
+		ship->shoot(Coordinate(x, y));
 		cursor->moveCursor(Coordinate(x, y));
 	}
 

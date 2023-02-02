@@ -77,7 +77,13 @@ void Ship::shoot(Coordinate destination)
 {
 	if (canShoot)
 	{
-		//bullets 
+		Coordinate direction = destination.diff(this->relativePosition).getNormalize();
+		Coordinate bSpeed = direction.mult(speed);
+		Coordinate bPos = Coordinate(position.x + direction.x * width, position.y + direction.y * height);
+		Bullet* bullet = new Bullet (bSpeed, bPos);
+
+		gGlobal->gameObjects.push_back(bullet);
+		gGlobal->bullets.push(bullet);
 		canShoot = false;
 	}
 }
@@ -106,4 +112,3 @@ void Ship::destroy()
 {
 	delete this;
 }
-

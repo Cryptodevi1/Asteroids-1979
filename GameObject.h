@@ -31,10 +31,10 @@ public:
 	Global* gGlobal;
 	objectType type;
 
-	virtual void update(float dt) = NULL;
-	virtual void move(float dt) = NULL;
-	virtual void collision(GameObject* obj) = NULL;
-	virtual void destroy() = NULL;
+	virtual void update(float dt) = 0;
+	virtual void move(float dt) = 0;
+	virtual void collision(GameObject* obj) = 0;
+	virtual void destroy() = 0;
 
 protected:
 	Sprite* spriteObj;
