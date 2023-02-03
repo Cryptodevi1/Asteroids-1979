@@ -12,7 +12,7 @@ public:
 	void normalize();
 	Coordinate getNormalize();
 
-	Coordinate diff(Coordinate point)
+	Coordinate sub(Coordinate point)
 	{
 		return Coordinate(this->x - point.x, this->y - point.y);
 	}

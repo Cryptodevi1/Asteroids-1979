@@ -33,6 +33,15 @@
     <ClCompile Include="Ship.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Asteroid.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework.h">
@@ -53,5 +62,50 @@
     <ClInclude Include="Ship.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Asteroid.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\aim.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\avatar.jpg">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\background.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\big_asteroid.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\bullet.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\circle.tga" />
+    <Image Include="data\dot.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\enemy.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\reticle.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\ship.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\small_asteroid.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="data\spaceship.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
 </Project>

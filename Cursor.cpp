@@ -6,7 +6,7 @@ Cursor::Cursor()
 }
 Cursor::~Cursor()
 {
-	delete cursor;
+	delete this;
 }
 void Cursor::update()
 {

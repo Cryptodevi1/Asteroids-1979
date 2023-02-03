@@ -13,7 +13,9 @@ Bullet::Bullet(Coordinate currentSpeed, Coordinate position) : GameObject()
 }
 
 Bullet::~Bullet()
-{}
+{
+	delete this;
+}
 
 void Bullet::update(float dt)
 {
@@ -30,7 +32,10 @@ void Bullet::move(float dt)
 
 void Bullet::collision(GameObject* obj) 
 {
-	//destroy asteroid
+	if (obj->type == objectType::asteroid)
+	{
+		this->needDestroy = true;
+	}
 }
 
 void Bullet::destroy() 

@@ -77,7 +77,7 @@ void Ship::shoot(Coordinate destination)
 {
 	if (canShoot)
 	{
-		Coordinate direction = destination.diff(this->relativePosition).getNormalize();
+		Coordinate direction = destination.sub(this->relativePosition).getNormalize();
 		Coordinate bSpeed = direction.mult(speed);
 		Coordinate bPos = Coordinate(position.x + direction.x * width, position.y + direction.y * height);
 		Bullet* bullet = new Bullet (bSpeed, bPos);
@@ -105,7 +105,10 @@ void Ship::move(float dt)
 }
 void Ship::collision(GameObject* obj)
 {
-	//collision with asteroids
+	if (obj->type == objectType::asteroid)
+	{
+		this->needDestroy = true;
+	}
 }
 
 void Ship::destroy()
