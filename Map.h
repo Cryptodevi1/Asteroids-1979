@@ -1,6 +1,6 @@
 #pragma once
-#include "Gameobject.h"
 #include "Global.h"
+#include "GameObject.h"
 #include "Ship.h"
 #include "Asteroid.h"
 #include <math.h>
@@ -9,34 +9,36 @@
 class Map
 {
 private:
-	Coordinate getPosAsteroid();
-	int spriteWidth;
-	int spriteHeight;
+	int spriteW;
+	int spriteH;
 
 	int row;
 	int col;
+
 public:
 	int width;
 	int height;
 
-	Ship* ship;
+	Coordinate mapOffset;
+	Coordinate mapTreshold;
+	Coordinate playerTreshold;
+
+	Ship* player;
 	Sprite* background;
 	Global* global;
 
-	Coordinate shipTheshold;
-	Coordinate mapTreshold;
-	Coordinate mapOffset;
-
+public:
 	Map(int width, int height);
 	~Map();
 
 	void update(float dt);
-
 	void checkColision();
-	bool checkObjectsCollision(GameObject* object, GameObject* _object);
 	void checkMapOutCollision(GameObject* object);
-
 	void spawnAsteroids();
 	void moveAround(GameObject* object);
-};
 
+	bool checkObjectsCollision(GameObject* object, GameObject* _object);
+
+private:
+	Coordinate getAsteroidPosition();
+};

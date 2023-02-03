@@ -14,7 +14,7 @@ Bullet::Bullet(Coordinate currentSpeed, Coordinate position) : GameObject()
 
 Bullet::~Bullet()
 {
-	delete this;
+
 }
 
 void Bullet::update(float dt)

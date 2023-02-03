@@ -5,7 +5,6 @@ Ship::Ship():GameObject()
 	spriteObj = createSprite("data/ship.png");
 	getSpriteSize(spriteObj, width, height);
 	type = objectType::ship;
-    needDestroy = false;
 	canShoot = false;
 
 	position.x = 320;
@@ -17,7 +16,7 @@ Ship::Ship():GameObject()
 
 Ship::~Ship()
 {
-	destroy();
+	
 }
 
 void Ship::onMouseClick(FRMouseButton button, bool isReleased)

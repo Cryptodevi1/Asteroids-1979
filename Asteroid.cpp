@@ -37,7 +37,7 @@ Asteroid::Asteroid(int size, Coordinate position, Coordinate maxSpeed) : GameObj
 }
 Asteroid::~Asteroid()
 {
-	delete this;
+	
 }
 void Asteroid::update(float dt)
 {
@@ -95,8 +95,8 @@ void Asteroid::destroy()
 
 	if (size == 1)
 	{
-		gGlobal->gameObjects.push_back(new Asteroid(0,this->position, this->maxSpeed.getNormalize().mult(0.5)));
-		gGlobal->gameObjects.push_back(new Asteroid(0, this->position, this->maxSpeed.getNormalize().mult(-0.5)));
+		gGlobal->gameObjects.push_back(new Asteroid(0, this->position, this->maxSpeed.getNormalize().mult(0.05)));
+		gGlobal->gameObjects.push_back(new Asteroid(0, this->position.sub(relativePosition) , this->maxSpeed.getNormalize().mult(0.05)));
 	}
 	delete this;
 }

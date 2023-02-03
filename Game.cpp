@@ -42,7 +42,7 @@ public:
 		ship = new Ship();
 		map = new Map(global->mapW, global->mapH);
 		ship->position = Coordinate(global->mapW / 2, global->mapH / 2);
-		map->ship = ship;
+		map->player = ship;
 		global->gameObjects.push_back(ship);
 		gameObjs = global->gameObjects;
 		showCursor(false);
