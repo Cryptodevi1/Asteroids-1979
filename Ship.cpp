@@ -2,13 +2,13 @@
 
 Ship::Ship():GameObject()
 {
-	spriteObj = createSprite("data/ship.png");
+	spriteObj = createSprite("data/spaceship.png");
 	getSpriteSize(spriteObj, width, height);
 	type = objectType::ship;
 	canShoot = false;
 
-	position.x = 320;
-	position.y = 100;
+	position.x = 0;
+	position.y = 0;
 	acceleration.x = 0;
 	acceleration.y = 0;
 	maxSpeed = 0.5f * speed;

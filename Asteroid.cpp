@@ -7,12 +7,7 @@ Asteroid::Asteroid(int size, Coordinate position, Coordinate maxSpeed) : GameObj
 		this->size = 1;
 		spriteObj = createSprite("data/big_asteroid.png");
 	}
-	else if (size < 0)
-	{
-		this->size = 0;
-		spriteObj = createSprite("data/small_asteroid.png");
-	}
-	else
+	else 
 	{
 		this->size = size;
 		spriteObj = createSprite("data/small_asteroid.png");
@@ -47,10 +42,12 @@ void Asteroid::update(float dt)
 
 void Asteroid::move(float dt) 
 {
-	currentSpeed.x = (fabs(currentSpeed.x) >= fabs(minSpeed.x) ? currentSpeed.x - deceleration.x * currentSpeed.x : minSpeed.x);
-	currentSpeed.y = (fabs(currentSpeed.y) >= fabs(minSpeed.y) ? currentSpeed.y - deceleration.y * currentSpeed.y : minSpeed.y);
-	position.x += currentSpeed.x * dt;
-	position.y += currentSpeed.y * dt;
+	currentSpeed.x = (fabs(currentSpeed.x) >= fabs(minSpeed.x) ? currentSpeed.x - deceleration.x * currentSpeed.x : minSpeed.x)*dt;
+	currentSpeed.y = (fabs(currentSpeed.y) >= fabs(minSpeed.y) ? currentSpeed.y - deceleration.y * currentSpeed.y : minSpeed.y)*dt;
+	currentSpeed.x = fabs(currentSpeed.x) > fabs(maxSpeed.x) ? maxSpeed.x : currentSpeed.x;
+	currentSpeed.y = fabs(currentSpeed.y) > fabs(maxSpeed.y) ? maxSpeed.y : currentSpeed.y;
+	position.x += currentSpeed.x;
+	position.y += currentSpeed.y;
 	relativePosition.x += currentSpeed.x * dt;
 	relativePosition.y += currentSpeed.y * dt;
 }
@@ -68,7 +65,7 @@ void Asteroid::collision(GameObject* obj)
 		Coordinate tempMinSpeed = this->minSpeed;
 		Coordinate tempDeceleration = this->deceleration;
 
-		this->currentSpeed = ((Asteroid*)obj)->currentSpeed;
+		this->currentSpeed = obj->currentSpeed;
 		this->maxSpeed = ((Asteroid*)obj)->maxSpeed;;
 		this->minSpeed = ((Asteroid*)obj)->minSpeed;;
 		this->deceleration = ((Asteroid*)obj)->deceleration;
@@ -95,8 +92,8 @@ void Asteroid::destroy()
 
 	if (size == 1)
 	{
-		gGlobal->gameObjects.push_back(new Asteroid(0, this->position, this->maxSpeed.getNormalize().mult(0.05)));
-		gGlobal->gameObjects.push_back(new Asteroid(0, this->position.sub(relativePosition) , this->maxSpeed.getNormalize().mult(0.05)));
+		gGlobal->gameObjects.push_back(new Asteroid(0, this->position, this->maxSpeed.getNormalize().mult(0.5)));
+		gGlobal->gameObjects.push_back(new Asteroid(0, this->position, this->maxSpeed.getNormalize().mult(-0.5)));
 	}
 	delete this;
 }

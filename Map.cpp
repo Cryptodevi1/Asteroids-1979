@@ -133,7 +133,17 @@ void Map::spawnAsteroids()
 	{
 		Coordinate position = getAsteroidPosition();
 
-		Coordinate direction = Coordinate(position.x - player->position.x, position.y - player->position.y).getNormalize();
+		if (rand() % 2 < 1) 
+		{
+			position.x *= -1;
+		}
+		else if (rand() % 2 == 1) 
+		{
+			position.x *= -1;
+			position.y *= -1;
+		}
+		else position.y *= -1;
+		Coordinate direction = Coordinate(position.x + player->position.x, position.y + player->position.y).getNormalize();
 		direction = direction.div(1);
 
 		Asteroid* asteroid = new Asteroid((rand() % 2), position, direction);

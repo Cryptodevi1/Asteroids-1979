@@ -2,7 +2,7 @@
 
 GameObject::GameObject() 
 {
-	speed = 30;
+	speed = 50;
 	gGlobal = Global::getInstance();
 	type = objectType::NONE;
 	width = 0;
